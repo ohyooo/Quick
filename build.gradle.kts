@@ -1,20 +1,11 @@
-buildscript {
-    repositories {
-        google()
-        mavenCentral()
-    }
-    dependencies {
-        classpath(Libs.Plugin.AGP)
-        classpath(Libs.Plugin.KGP)
-    }
+@file:Suppress("UnstableApiUsage")
+
+plugins {
+    id("com.android.application") version Libs.Version.agp apply false
+    kotlin("android") version Libs.Version.kotlin apply false
 }
 
 allprojects {
-    repositories {
-        google()
-        mavenCentral()
-    }
-
     tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
         kotlinOptions {
             jvmTarget = "17"
@@ -27,10 +18,6 @@ allprojects {
             )
         }
     }
-}
-
-tasks.register<Delete>("clean") {
-    delete(rootProject.buildDir)
 }
 
 tasks.register<UpdateTask>("update")

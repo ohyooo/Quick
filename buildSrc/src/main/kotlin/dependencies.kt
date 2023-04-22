@@ -9,16 +9,20 @@ object Ext {
 }
 
 object Libs {
-    const val kotlinVersion = "1.8.20"
+
+    object Version {
+        const val agp = "8.0.0"
+        const val kotlin = "1.8.20"
+    }
 
     object Kotlin {
-        const val stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
+        const val stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Version.kotlin}"
         const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4"
     }
 
     object Plugin {
-        const val AGP = "com.android.tools.build:gradle:8.0.0"
-        const val KGP = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+        const val AGP = "com.android.tools.build:gradle:${Version.agp}"
+        const val KGP = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Version.kotlin}"
     }
 
     object AndroidX {
