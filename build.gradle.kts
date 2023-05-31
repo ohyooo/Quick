@@ -14,7 +14,6 @@ allprojects {
                 "-opt-in=kotlin.RequiresOptIn",
                 "-Xcontext-receivers",
                 "-jvm-target=17",
-                "-language-version=2.0",
             )
         }
     }

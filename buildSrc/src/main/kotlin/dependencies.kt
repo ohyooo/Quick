@@ -11,13 +11,13 @@ object Ext {
 object Libs {
 
     object Version {
-        const val agp = "8.0.1"
-        const val kotlin = "1.8.21"
+        const val agp = "8.0.2"
+        const val kotlin = "1.9.0-Beta"
     }
 
     object Kotlin {
         const val stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Version.kotlin}"
-        const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4"
+        const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1"
     }
 
     object Plugin {
@@ -27,7 +27,7 @@ object Libs {
 
     object AndroidX {
         const val appcompat = "androidx.appcompat:appcompat:1.6.1"
-        const val coreKtx = "androidx.core:core-ktx:1.10.0"
+        const val coreKtx = "androidx.core:core-ktx:1.10.1"
         const val fragmentKtx = "androidx.fragment:fragment-ktx:1.5.7"
     }
 
