@@ -19,7 +19,6 @@ android {
         }
     }
     compileSdk = Ext.compileSdk
-    buildToolsVersion = Ext.buildToolsVersion
     defaultConfig {
         applicationId = Ext.applicationId
         minSdk = Ext.minSdk

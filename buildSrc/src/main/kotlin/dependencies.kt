@@ -1,9 +1,8 @@
 object Ext {
     const val applicationId = "com.ohyooo.quick"
     const val minSdk = 28
-    const val compileSdk = 33
-    const val buildToolsVersion = "33.0.2"
-    const val targetSdk = 33
+    const val compileSdk = 34
+    const val targetSdk = 34
     const val versionCode = 1
     const val versionName = "1.0"
 }
@@ -11,13 +10,13 @@ object Ext {
 object Libs {
 
     object Version {
-        const val agp = "8.0.2"
-        const val kotlin = "1.9.0-Beta"
+        const val agp = "8.1.0"
+        const val kotlin = "1.9.0"
     }
 
     object Kotlin {
         const val stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Version.kotlin}"
-        const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1"
+        const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3"
     }
 
     object Plugin {
@@ -28,7 +27,7 @@ object Libs {
     object AndroidX {
         const val appcompat = "androidx.appcompat:appcompat:1.6.1"
         const val coreKtx = "androidx.core:core-ktx:1.10.1"
-        const val fragmentKtx = "androidx.fragment:fragment-ktx:1.5.7"
+        const val fragmentKtx = "androidx.fragment:fragment-ktx:1.6.1"
     }
 
     val appImplements = arrayOf(
