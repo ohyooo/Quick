@@ -10,8 +10,8 @@ object Ext {
 object Libs {
 
     object Version {
-        const val agp = "8.1.0"
-        const val kotlin = "1.9.0"
+        const val agp = "8.1.2"
+        const val kotlin = "1.9.10"
     }
 
     object Kotlin {
@@ -26,7 +26,7 @@ object Libs {
 
     object AndroidX {
         const val appcompat = "androidx.appcompat:appcompat:1.6.1"
-        const val coreKtx = "androidx.core:core-ktx:1.10.1"
+        const val coreKtx = "androidx.core:core-ktx:1.12.0"
         const val fragmentKtx = "androidx.fragment:fragment-ktx:1.6.1"
     }
 
