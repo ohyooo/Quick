@@ -3,6 +3,7 @@
 plugins {
     id("com.android.application") version Libs.Version.agp apply false
     kotlin("android") version Libs.Version.kotlin apply false
+    id("org.mozilla.rust-android-gradle.rust-android") version Libs.Version.mozilla_rust apply false
 }
 
 allprojects {

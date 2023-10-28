@@ -12,6 +12,7 @@ object Libs {
     object Version {
         const val agp = "8.1.2"
         const val kotlin = "1.9.10"
+        const val mozilla_rust = "0.9.3"
     }
 
     object Kotlin {
@@ -22,6 +23,7 @@ object Libs {
     object Plugin {
         const val AGP = "com.android.tools.build:gradle:${Version.agp}"
         const val KGP = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Version.kotlin}"
+        const val mozilla_rust = "org.mozilla.rust-android-gradle.rust-android:${Version.mozilla_rust}"
     }
 
     object AndroidX {
