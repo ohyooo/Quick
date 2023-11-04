@@ -11,7 +11,7 @@ object Libs {
 
     object Version {
         const val agp = "8.1.2"
-        const val kotlin = "1.9.10"
+        const val kotlin = "1.9.20"
     }
 
     object Kotlin {
