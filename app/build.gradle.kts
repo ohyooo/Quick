@@ -44,8 +44,16 @@ android {
         jvmTarget = "17"
     }
     buildFeatures {
+        compose = true
+        // Disable unused AGP features
+        buildConfig = false
+        aidl = false
+        renderScript = false
         resValues = false
         shaders = false
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = Libs.Compose.compilerVersion
     }
 }
 
@@ -57,4 +65,5 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
 
 dependencies {
     Libs.appImplements.forEach(::implementation)
+    Libs.Compose.list.forEach(::implementation)
 }

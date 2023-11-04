@@ -30,6 +30,23 @@ object Libs {
         const val fragmentKtx = "androidx.fragment:fragment-ktx:1.6.1"
     }
 
+    object Compose {
+        val activity_compose = "androidx.activity:activity-compose:1.8.0"
+
+        val composeVersion = "1.5.4"
+        val compilerVersion = "1.5.3"
+        val compiler = "androidx.compose.compiler:compiler:$compilerVersion"
+        val foundation = "androidx.compose.foundation:foundation:$composeVersion"
+        val material = "androidx.compose.material:material:$composeVersion"
+        val materialIconsExtended = "androidx.compose.material:material-icons-extended:$composeVersion"
+        val runtime = "androidx.compose.runtime:runtime:$composeVersion"
+        val ui = "androidx.compose.ui:ui:$composeVersion"
+        val uiToolingPreview = "androidx.compose.ui:ui-tooling-preview:$composeVersion"
+        val uiTooling = "androidx.compose.ui:ui-tooling:$composeVersion"
+
+        val list = listOf(activity_compose, compiler, foundation, material, materialIconsExtended, runtime, ui, uiToolingPreview, uiTooling)
+    }
+
     val appImplements = arrayOf(
         AndroidX.appcompat,
         AndroidX.coreKtx,

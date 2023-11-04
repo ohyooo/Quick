@@ -1,18 +1,15 @@
 package com.ohyooo.quick
 
-import android.os.Bundle
 import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.compose.material.Text
 
 class SplashActivity : ComponentActivity() {
 
     override fun onResume() {
         super.onResume()
-        println("1234")
-        SaveOnResume()
-    }
-
-    fun SaveOnResume() {
-        super.onResume()
-
+        setContent {
+            Text(text = "Hello")
+        }
     }
 }
