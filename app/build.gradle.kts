@@ -53,5 +53,12 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
 }
 
 dependencies {
-    Libs.appImplements.forEach(::implementation)
+    // Kotlin
+    implementation Libs.Kotlin.stdlib
+    implementation Libs.Kotlin.coroutines
+
+    // AndroidX
+    implementation Libs.AndroidX.appcompat
+    implementation Libs.AndroidX.coreKtx
+    implementation Libs.AndroidX.fragmentKtx
 }
