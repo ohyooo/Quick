@@ -21,8 +21,8 @@ androidx_core_ktx = "androidx.core:core-ktx:${core_ktx}"
 androidx_fragment_ktx = "androidx.fragment:fragment-ktx:${fragment_ktx}"
 
 [plugins]
-agp = "com.android.tools.build:gradle:${agp}"
-kgp = "org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlin}"
+agp = { id = "com.android.application", version.ref = "agp" }
+kgp = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 ks = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 
 [bundles]
