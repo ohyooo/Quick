@@ -6,7 +6,6 @@ plugins {
 }
 
 android {
-    namespace = Ext.applicationId
     signingConfigs {
         getByName("debug") {
             storeFile = file("..\\signkey.jks")
@@ -18,13 +17,15 @@ android {
             enableV4Signing = true
         }
     }
-    compileSdk = Ext.compileSdk
+    namespace = libs.versions.application.id.get()
+	compileSdk = libs.versions.compile.sdk.get().toInt()
     defaultConfig {
-        applicationId = Ext.applicationId
-        minSdk = Ext.minSdk
-        targetSdk = Ext.targetSdk
-        versionCode = Ext.versionCode
-        versionName = Ext.versionName
+        applicationId = libs.versions.application.id.get()
+        minSdk = libs.versions.min.sdk.get().toInt()
+        targetSdk = libs.versions.target.sdk.get().toInt()
+        versionCode = libs.versions.version.code.get().toInt()
+        versionName = libs.versions.target.sdk.get() + hashTag
+        proguardFile("proguard-rules.pro")
         signingConfig = signingConfigs.getByName("debug")
     }
     buildTypes {
@@ -53,6 +54,7 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
 }
 
 dependencies {
+<<<<<<< HEAD
     // Kotlin
     implementation Libs.Kotlin.stdlib
     implementation Libs.Kotlin.coroutines
@@ -61,4 +63,27 @@ dependencies {
     implementation Libs.AndroidX.appcompat
     implementation Libs.AndroidX.coreKtx
     implementation Libs.AndroidX.fragmentKtx
+=======
+    implementation(libs.bundles.all)
+>>>>>>> fcaaaf5 (update)
 }
+
+val hashTag: String
+    get() {
+        if (!File(rootDir.path + "/.git").exists()) return ""
+        return ProcessBuilder(listOf("git", "rev-parse", "--short", "HEAD"))
+            .directory(rootDir)
+            .redirectOutput(ProcessBuilder.Redirect.PIPE)
+            .redirectError(ProcessBuilder.Redirect.PIPE)
+            .start()
+            .apply { waitFor(5, TimeUnit.SECONDS) }
+            .run {
+                val error = errorStream.bufferedReader().readText().trim()
+                if (error.isNotEmpty()) {
+                    ""
+                } else {
+                    "-" + inputStream.bufferedReader().readText().trim()
+                }
+            }
+    }
+
