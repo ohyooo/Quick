@@ -54,18 +54,7 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
 }
 
 dependencies {
-<<<<<<< HEAD
-    // Kotlin
-    implementation Libs.Kotlin.stdlib
-    implementation Libs.Kotlin.coroutines
-
-    // AndroidX
-    implementation Libs.AndroidX.appcompat
-    implementation Libs.AndroidX.coreKtx
-    implementation Libs.AndroidX.fragmentKtx
-=======
     implementation(libs.bundles.all)
->>>>>>> fcaaaf5 (update)
 }
 
 val hashTag: String
