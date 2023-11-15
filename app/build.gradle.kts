@@ -6,10 +6,9 @@ plugins {
 }
 
 android {
-    namespace = Ext.applicationId
     signingConfigs {
         getByName("debug") {
-            storeFile = file("..\\signkey.jks")
+            storeFile = file("signkey.jks")
             storePassword = "123456"
             keyPassword = "123456"
             keyAlias = "demo"
@@ -18,19 +17,18 @@ android {
             enableV4Signing = true
         }
     }
-    compileSdk = Ext.compileSdk
+    namespace = libs.versions.application.id.get()
+	compileSdk = libs.versions.compile.sdk.get().toInt()
     defaultConfig {
-        applicationId = Ext.applicationId
-        minSdk = Ext.minSdk
-        targetSdk = Ext.targetSdk
-        versionCode = Ext.versionCode
-        versionName = Ext.versionName
+        applicationId = libs.versions.application.id.get()
+        minSdk = libs.versions.min.sdk.get().toInt()
+        targetSdk = libs.versions.target.sdk.get().toInt()
+        versionCode = libs.versions.version.code.get().toInt()
+        versionName = libs.versions.target.sdk.get() + hashTag
+        proguardFile("proguard-rules.pro")
         signingConfig = signingConfigs.getByName("debug")
     }
     buildTypes {
-        debug {
-            isMinifyEnabled = false
-        }
         release {
             isMinifyEnabled = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "consumer-rules.pro")
@@ -53,7 +51,7 @@ android {
         shaders = false
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = Libs.Compose.compilerVersion
+        kotlinCompilerExtensionVersion = libs.version.compose.compiler
     }
 }
 
@@ -64,6 +62,25 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
 }
 
 dependencies {
-    Libs.appImplements.forEach(::implementation)
-    Libs.Compose.list.forEach(::implementation)
+    implementation(libs.bundles.all)
 }
+
+val hashTag: String
+    get() {
+        if (!File(rootDir.path + "/.git").exists()) return ""
+        return ProcessBuilder(listOf("git", "rev-parse", "--short", "HEAD"))
+            .directory(rootDir)
+            .redirectOutput(ProcessBuilder.Redirect.PIPE)
+            .redirectError(ProcessBuilder.Redirect.PIPE)
+            .start()
+            .apply { waitFor(5, TimeUnit.SECONDS) }
+            .run {
+                val error = errorStream.bufferedReader().readText().trim()
+                if (error.isNotEmpty()) {
+                    ""
+                } else {
+                    "-" + inputStream.bufferedReader().readText().trim()
+                }
+            }
+    }
+
