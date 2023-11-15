@@ -11,16 +11,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@latest
 
       - name: Get Time
         id: time
-        uses: nanzm/get-time-action@v1.1
+        uses: nanzm/get-time-action@latest
         with:
           timeZone: 8
           format: 'YYYYMMDDHHmmss'
 
-      - uses: actions/setup-java@v3
+      - uses: actions/setup-java@latest
         with:
           distribution: 'zulu'
           java-version: '17'
