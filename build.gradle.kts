@@ -4,7 +4,7 @@ plugins {
     alias(libs.plugins.agp) apply false
     alias(libs.plugins.kgp) apply false
     alias(libs.plugins.ks) apply false
-    id("org.mozilla.rust-android-gradle.rust-android") version Libs.Version.mozilla_rust apply false
+    alias(libs.plugins.mozilla.rust) apply false
 }
 
 allprojects {
