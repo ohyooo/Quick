@@ -1,0 +1,73 @@
+name: Android CI
+
+on:
+  push:
+  repository_dispatch:
+  workflow_dispatch:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Get Time
+        id: time
+        uses: nanzm/get-time-action@v1.1
+        with:
+          timeZone: 8
+          format: 'YYYYMMDDHHmmss'
+     
+      - uses: actions/setup-java@v2
+        with:
+          distribution: 'zulu'
+          java-version: '17'        
+ 
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      - name: Config git
+        run: git config user.name ohyooo && git config user.mail i@ohyooo.com
+
+      - name: Push changes
+        run: git add . && git commit -m "update libs" && git push || true
+
+      - name: Build APK
+        run: ./gradlew assembleRelease
+     
+      # - name: Create Release
+      #   id: create_release
+      #   uses: actions/create-release@v1
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   with:
+      #     tag_name: ${{ steps.time.outputs.time }}
+      #     release_name: Calendar Release ${{ steps.time.outputs.time }}
+      #     draft: false
+      #     prerelease: false
+
+      # - name: Generate release tag
+      #   id: tag
+      #   run: |
+      #     echo "::set-output name=release_tag::$(date +"%Y.%m.%d_%H-%M")"
+      # - name: Upload Release
+      #   uses: softprops/action-gh-release@v1
+      #   with:
+      #     tag_name: ${{ steps.tag.outputs.release_tag }}
+      #     files: "app/build/outputs/apk/release/*.apk"
+ 
+      # - name: Remove old Releases
+      #   uses: dev-drprasad/delete-older-releases@v0.2.0
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   with:
+      #     keep_latest: 5
+      #     delete_tags: true
+
+      # - name: Delete workflow runs
+      #   uses: GitRML/delete-workflow-runs@main
+      #   with:
+      #     token: ${{ secrets.ACTIONS_TRIGGER_PAT }}
+      #     retain_days: 3
