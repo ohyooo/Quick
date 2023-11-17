@@ -41,7 +41,7 @@ jobs:
         uses: svenstaro/upload-release-action@master
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: android/build/outputs/apk/release/*.apk
+          file: app/build/outputs/apk/release/*.apk
           asset_name: JPSyllabary
           tag: ${{ github.ref }}_${{ steps.time.outputs.time }}
           overwrite: true
