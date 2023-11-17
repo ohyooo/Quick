@@ -35,7 +35,7 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build APK
-        run: ./gradlew :android:assembleRelease
+        run: ./gradlew :app:assembleRelease
 
       - name: Upload to release
         uses: svenstaro/upload-release-action@master
