@@ -4,9 +4,34 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
+    target-branch: master
     registries:
       - maven-google
       - gradle-plugin
+
+  - package-ecosystem: "gradle"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    target-branch: compose
+    registries:
+      - maven-google
+      - gradle-plugin
+
+  - package-ecosystem: "gradle"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    target-branch: rust
+    registries:
+      - maven-google
+      - gradle-plugin
+
+  - package-ecosystem: "cargo"
+    directory: "/rust"
+    schedule:
+      interval: "daily"
+    target-branch: rust
 
   - package-ecosystem: "github-actions"
     directory: "/"
