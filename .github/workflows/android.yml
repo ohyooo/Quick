@@ -5,81 +5,58 @@ on:
   repository_dispatch:
   workflow_dispatch:
 
+permissions:
+  actions: write
+  contents: write
+
 jobs:
   build:
 
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@latest
+      - uses: actions/checkout@main
 
       - name: Get Time
         id: time
-        uses: nanzm/get-time-action@latest
+        uses: nanzm/get-time-action@master
         with:
           timeZone: 8
           format: 'YYYYMMDDHHmmss'
-
-      - uses: actions/setup-java@latest
+     
+      - name: Setup JDK
+        uses: actions/setup-java@main
         with:
           distribution: 'zulu'
           java-version: '17'
-
-      - name: Add ARMv7 target (arm)
-        run: rustup target add armv7-linux-androideabi
-
-      - name: Add i686 target (x86)
-        run: rustup target add i686-linux-android
-
-      - name: Add aarch64 target (arm64)
-        run: rustup target add aarch64-linux-android
-
-      - name: Add x86_64 target (x86_64)
-        run: rustup target add x86_64-linux-android
+          java-package: jdk
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
-      - name: Config git
-        run: git config user.name ohyooo && git config user.mail i@ohyooo.com
-
-      - name: Push changes
-        run: git add . && git commit -m "update libs" && git push || true
-
       - name: Build APK
-        run: ./gradlew assembleRelease
-     
-      # - name: Create Release
-      #   id: create_release
-      #   uses: actions/create-release@v1
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #   with:
-      #     tag_name: ${{ steps.time.outputs.time }}
-      #     release_name: Calendar Release ${{ steps.time.outputs.time }}
-      #     draft: false
-      #     prerelease: false
+        run: ./gradlew :app:assembleRelease
 
-      # - name: Generate release tag
-      #   id: tag
-      #   run: |
-      #     echo "::set-output name=release_tag::$(date +"%Y.%m.%d_%H-%M")"
-      # - name: Upload Release
-      #   uses: softprops/action-gh-release@v1
-      #   with:
-      #     tag_name: ${{ steps.tag.outputs.release_tag }}
-      #     files: "app/build/outputs/apk/release/*.apk"
- 
-      # - name: Remove old Releases
-      #   uses: dev-drprasad/delete-older-releases@v0.2.0
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #   with:
-      #     keep_latest: 5
-      #     delete_tags: true
+      - name: Upload to release
+        uses: svenstaro/upload-release-action@master
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: app/build/outputs/apk/release/*.apk
+          asset_name: JPSyllabary
+          tag: ${{ github.ref }}_${{ steps.time.outputs.time }}
+          overwrite: true
+          file_glob: true
 
-      # - name: Delete workflow runs
-      #   uses: GitRML/delete-workflow-runs@main
-      #   with:
-      #     token: ${{ secrets.ACTIONS_TRIGGER_PAT }}
-      #     retain_days: 3
+      - name: Remove old Releases
+        uses: dev-drprasad/delete-older-releases@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          keep_latest: 3
+          delete_tags: true
+
+      - name: Delete workflow runs
+        uses: GitRML/delete-workflow-runs@main
+        with:
+          retain_days: 3
+          keep_minimum_runs: 2

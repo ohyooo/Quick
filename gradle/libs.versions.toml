@@ -15,6 +15,7 @@ kgp = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 ks = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 mozilla_rust = "org.mozilla.rust-android-gradle.rust-android:0.9.3"
 
+
 [libraries]
 kotlin_coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3"
 androidx_appcompat = "androidx.appcompat:appcompat:1.6.1"
