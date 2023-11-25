@@ -1,7 +1,6 @@
 @file:Suppress("UnstableApiUsage")
 
 import com.nishtahir.CargoBuildTask
-import com.nishtahir.CargoExtension
 import org.gradle.kotlin.dsl.support.listFilesOrdered
 
 
@@ -25,7 +24,7 @@ android {
         }
     }
     namespace = libs.versions.application.id.get()
-	compileSdk = libs.versions.compile.sdk.get().toInt()
+    compileSdk = libs.versions.compile.sdk.get().toInt()
     defaultConfig {
         applicationId = libs.versions.application.id.get()
         minSdk = libs.versions.min.sdk.get().toInt()
@@ -83,32 +82,22 @@ val hashTag: String
             }
     }
 
-tasks.whenTaskAdded {
-    if (name == "javaPreCompileDebug" || name == "javaPreCompileRelease") {
-        dependsOn("cargoBuild")
-    }
+cargo {
+    module = "../rust"
+    libname = "rust"
+    targets = listOf("arm", "arm64", "x86", "x86_64")
+    profile = if (gradle.startParameter.taskNames.any { it.lowercase().contains("debug") }) "debug" else "release"
+    prebuiltToolchains = true
 }
+
 
 tasks.preBuild.configure {
     dependsOn.add(tasks.withType(CargoBuildTask::class.java))
 }
 
-extensions.configure(CargoExtension::class) {
-    module = "../rust"
-    libname = "rust"
-    targets = listOf("arm", "arm64", "x86", "x86_64")
-    profile = if (gradle.startParameter.taskNames.any { it.lowercase().contains("debug") }) "debug" else "release"
-}
-
-project.afterEvaluate {
-    tasks.withType(CargoBuildTask::class)
-        .forEach { buildTask ->
-            tasks.withType(com.android.build.gradle.tasks.MergeSourceSetFolders::class)
-                .configureEach {
-                    this.inputs.dir(
-                        layout.buildDirectory.dir("rustJniLibs" + File.separatorChar + buildTask.toolchain!!.folder)
-                    )
-                    this.dependsOn(buildTask)
-                }
-        }
+tasks.whenObjectAdded {
+    if ((this.name == "mergeDebugJniLibFolders" || this.name == "mergeReleaseJniLibFolders")) {
+        this.dependsOn("cargoBuild")
+        this.inputs.dir(buildDir.resolve("rustJniLibs/android"))
+    }
 }

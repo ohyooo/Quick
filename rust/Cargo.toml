@@ -8,7 +8,7 @@ jni = "0.21"
 
 [lib]
 name = "rust"
-crate_type = ["staticlib", "dylib"]
+crate_type = ["lib", "staticlib", "cdylib"]
 
 [profile.release]
 codegen-units = 1

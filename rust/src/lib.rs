@@ -3,7 +3,7 @@ use jni::objects::{JClass, JString};
 use jni::sys::jstring;
 
 #[no_mangle]
-pub extern "system" fn Java_com_ohyooo_quick_HelloWorld_hello <'local>(mut env: JNIEnv<'local>, _class: JClass<'local>, input: JString<'local>)-> jstring {
+pub extern "system" fn Java_com_ohyooo_quick_HelloWorld_hello <'local>(mut env: JNIEnv<'local>, class: JClass<'local>, input: JString<'local>)-> jstring {
     let input: String = env.get_string(&input).expect("Couldn't get java string!").into();
 
     let output = env.new_string(format!("hello, {}!", input))
