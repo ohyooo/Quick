@@ -17,4 +17,4 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "Quick"
-include(":app")
+include(":app", ":kni")

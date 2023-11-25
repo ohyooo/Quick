@@ -13,6 +13,7 @@ kotlin = "1.9.21"
 agp = { id = "com.android.application", version.ref = "agp" }
 kgp = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 ks = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+kmm = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 
 [libraries]
 kotlin_coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3"
