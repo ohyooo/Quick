@@ -83,6 +83,11 @@ val hashTag: String
             }
     }
 
+tasks.whenTaskAdded {
+    if (name == "javaPreCompileDebug" || name == "javaPreCompileRelease") {
+        dependsOn("cargoBuild")
+    }
+}
 
 tasks.preBuild.configure {
     dependsOn.add(tasks.withType(CargoBuildTask::class.java))
