@@ -14,7 +14,7 @@ allprojects {
                 "-Xbackend-threads=12",
                 "-opt-in=kotlin.RequiresOptIn",
                 "-Xcontext-receivers",
-                "-jvm-target=17",
+                "-jvm-target=19",
             )
         }
     }
