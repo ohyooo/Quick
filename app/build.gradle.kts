@@ -39,7 +39,7 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "17"
+        jvmTarget = "19"
     }
     buildFeatures {
         resValues = false
@@ -49,7 +49,7 @@ android {
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
     kotlinOptions {
-        jvmTarget = "17"
+        jvmTarget = "19"
     }
 }
 
