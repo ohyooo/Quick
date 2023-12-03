@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.kgp) apply false
     alias(libs.plugins.ks) apply false
     alias(libs.plugins.jc) apply false
+    alias(libs.plugins.mozilla.rust) apply false
 }
 
 allprojects {
@@ -15,7 +16,7 @@ allprojects {
                 "-Xbackend-threads=12",
                 "-opt-in=kotlin.RequiresOptIn",
                 "-Xcontext-receivers",
-                "-jvm-target=19",
+                "-jvm-target=21",
             )
         }
     }

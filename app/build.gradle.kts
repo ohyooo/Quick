@@ -1,12 +1,18 @@
 @file:Suppress("UnstableApiUsage")
 
+import com.nishtahir.CargoBuildTask
+import org.gradle.kotlin.dsl.support.listFilesOrdered
+
+
 plugins {
     id("com.android.application")
     kotlin("android")
     alias(libs.plugins.jc)
+    id("org.mozilla.rust-android-gradle.rust-android")
 }
 
 android {
+    ndkVersion = sdkDirectory.resolve("ndk").listFilesOrdered().last().name
     signingConfigs {
         getByName("debug") {
             storeFile = file("signkey.jks")
@@ -19,7 +25,7 @@ android {
         }
     }
     namespace = libs.versions.application.id.get()
-	compileSdk = libs.versions.compile.sdk.get().toInt()
+    compileSdk = libs.versions.compile.sdk.get().toInt()
     defaultConfig {
         applicationId = libs.versions.application.id.get()
         minSdk = libs.versions.min.sdk.get().toInt()
@@ -40,7 +46,7 @@ android {
         targetCompatibility = JavaVersion.VERSION_21
     }
     kotlinOptions {
-        jvmTarget = "21"
+        jvmTarget = "17"
     }
     buildFeatures {
         compose = true
@@ -85,3 +91,22 @@ val hashTag: String
             }
     }
 
+cargo {
+    module = "../rust"
+    libname = "rust"
+    targets = listOf("arm", "arm64", "x86", "x86_64")
+    profile = if (gradle.startParameter.taskNames.any { it.lowercase().contains("debug") }) "debug" else "release"
+    prebuiltToolchains = true
+}
+
+
+tasks.preBuild.configure {
+    dependsOn.add(tasks.withType(CargoBuildTask::class.java))
+}
+
+tasks.whenObjectAdded {
+    if ((this.name == "mergeDebugJniLibFolders" || this.name == "mergeReleaseJniLibFolders")) {
+        this.dependsOn("cargoBuild")
+        this.inputs.dir(layout.buildDirectory.dir("rustJniLibs/android"))
+    }
+}

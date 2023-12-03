@@ -1,0 +1,24 @@
+[package]
+name = "rust"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+jni = "0.21"
+
+[lib]
+name = "rust"
+crate_type = ["lib", "staticlib", "cdylib"]
+
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = "z"
+panic = "abort"
+strip = true
+
+# https://github.com/mozilla/rust-android-gradle
+# rustup target add armv7-linux-androideabi
+# rustup target add i686-linux-android
+# rustup target add aarch64-linux-android
+# rustup target add x86_64-linux-android
