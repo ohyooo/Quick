@@ -70,6 +70,7 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
 
 dependencies {
     implementation(libs.bundles.compose)
+    implementation(project(":kni"))
 }
 
 val hashTag: String

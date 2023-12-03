@@ -6,6 +6,7 @@ plugins {
     alias(libs.plugins.ks) apply false
     alias(libs.plugins.jc) apply false
     alias(libs.plugins.mozilla.rust) apply false
+    alias(libs.plugins.kmm) apply false
 }
 
 allprojects {
