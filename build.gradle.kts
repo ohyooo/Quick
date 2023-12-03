@@ -10,7 +10,7 @@ plugins {
 allprojects {
     tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
         kotlinOptions {
-            jvmTarget = "19"
+            jvmTarget = "21"
             freeCompilerArgs = freeCompilerArgs + listOf(
                 "-Xbackend-threads=12",
                 "-opt-in=kotlin.RequiresOptIn",
