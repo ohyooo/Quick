@@ -3,7 +3,6 @@
 
 pluginManagement {
     repositories {
-        maven { url = java.net.URI("https://mirrors.tencent.com/nexus/repository/maven-public/") }
         google()
         mavenCentral()
         gradlePluginPortal()
@@ -11,9 +10,8 @@ pluginManagement {
 }
 
 dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    // repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
-        maven { url = java.net.URI("https://mirrors.tencent.com/nexus/repository/maven-public/") }
         google()
         mavenCentral()
     }
