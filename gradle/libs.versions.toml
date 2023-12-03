@@ -9,6 +9,9 @@ version_name = "2.10"
 agp = "8.2.0"
 kotlin = "1.9.21"
 
+compose = "1.5.4"
+compose-compiler = "1.5.5"
+
 [plugins]
 agp = { id = "com.android.application", version.ref = "agp" }
 kgp = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
@@ -19,6 +22,18 @@ kotlin_coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3"
 androidx_appcompat = "androidx.appcompat:appcompat:1.6.1"
 androidx_core_ktx = "androidx.core:core-ktx:1.12.0"
 androidx_fragment_ktx = "androidx.fragment:fragment-ktx:1.6.2"
+
+compose-activity = "androidx.activity:activity-compose:1.8.1"
+compiler = { module = "androidx.compose.compiler:compiler", version.ref = "compose-compiler" }
+foundation = { module = "androidx.compose.foundation:foundation", version.ref = "compose" }
+material = { module = "androidx.compose.material:material", version.ref = "compose" }
+materialIconsExtended = { module = "androidx.compose.material:material-icons-extended", version.ref = "compose" }
+runtime = { module = "androidx.compose.runtime:runtime", version.ref = "compose" }
+ui = { module = "androidx.compose.ui:ui", version.ref = "compose" }
+uiToolingPreview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose" }
+uiTooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
+
+
 [bundles]
 all = [
     "kotlin_coroutines",
@@ -26,3 +41,5 @@ all = [
     "androidx_core_ktx",
     "androidx_fragment_ktx"
 ]
+
+compose = ["compose-activity", "compiler", "foundation", "material", "materialIconsExtended", "runtime", "ui", "uiToolingPreview", "uiTooling"]
