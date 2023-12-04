@@ -5,10 +5,10 @@ import org.gradle.kotlin.dsl.support.listFilesOrdered
 
 
 plugins {
-    id("com.android.application")
-    kotlin("android")
+    alias(libs.plugins.agp)
+    alias(libs.plugins.kgp)
     alias(libs.plugins.jc)
-    id("org.mozilla.rust-android-gradle.rust-android")
+    alias(libs.plugins.mozilla.rust)
 }
 
 android {
