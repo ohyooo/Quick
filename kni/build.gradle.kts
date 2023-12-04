@@ -68,10 +68,10 @@ kotlin {
 }
 
 android {
-    compileSdk = 34
+    compileSdk = libs.versions.compile.sdk.get().toInt()
     namespace = "com.ohyooo.kni"
     defaultConfig {
-        minSdk = 21
+        minSdk = libs.versions.min.sdk.get().toInt()
         consumerProguardFile("consumer-rules.pro")
     }
     compileOptions {
