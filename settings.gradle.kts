@@ -18,4 +18,4 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "Quick"
-include(":app", ":kni")
+include(":app", ":kni", ":rust")

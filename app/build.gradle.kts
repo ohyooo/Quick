@@ -1,18 +1,12 @@
 @file:Suppress("UnstableApiUsage")
 
-import com.nishtahir.CargoBuildTask
-import org.gradle.kotlin.dsl.support.listFilesOrdered
-
-
 plugins {
     alias(libs.plugins.agp)
     alias(libs.plugins.kgp)
     alias(libs.plugins.jc)
-    alias(libs.plugins.mozilla.rust)
 }
 
 android {
-    ndkVersion = sdkDirectory.resolve("ndk").listFilesOrdered().last().name
     signingConfigs {
         getByName("debug") {
             storeFile = file("signkey.jks")
@@ -63,6 +57,7 @@ android {
 dependencies {
     implementation(libs.bundles.compose)
     implementation(project(":kni"))
+    implementation(project(":rust"))
 }
 
 val hashTag: String
@@ -84,22 +79,3 @@ val hashTag: String
             }
     }
 
-cargo {
-    module = "../rust"
-    libname = "rust"
-    targets = listOf("arm", "arm64", "x86", "x86_64")
-    profile = if (gradle.startParameter.taskNames.any { it.lowercase().contains("debug") }) "debug" else "release"
-    prebuiltToolchains = true
-}
-
-
-tasks.preBuild.configure {
-    dependsOn.add(tasks.withType(CargoBuildTask::class.java))
-}
-
-tasks.configureEach {
-    if ((this.name == "mergeDebugJniLibFolders" || this.name == "mergeReleaseJniLibFolders")) {
-        this.dependsOn("cargoBuild")
-        this.inputs.dir(layout.buildDirectory.dir("rustJniLibs/android"))
-    }
-}

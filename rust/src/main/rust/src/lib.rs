@@ -3,7 +3,7 @@ use jni::objects::{JClass, JString};
 use jni::sys::jstring;
 
 #[no_mangle]
-pub extern "system" fn Java_com_ohyooo_quick_HelloWorld_hello <'local>(mut env: JNIEnv<'local>, _class: JClass<'local>, input: JString<'local>)-> jstring {
+pub extern "system" fn Java_com_ohyooo_rust_librust_hello <'local>(mut env: JNIEnv<'local>, _class: JClass<'local>, input: JString<'local>)-> jstring {
     let input: String = env.get_string(&input).expect("Couldn't get java string!").into();
 
     let output = env.new_string(format!("hello, {}!", input))
@@ -12,8 +12,8 @@ pub extern "system" fn Java_com_ohyooo_quick_HelloWorld_hello <'local>(mut env: 
     output.into_raw()
 }
 
-// package com.ohyooo.quick
-// object HelloWorld {
+// package com.ohyooo.rust
+// object librust {
 //     private external fun hello(input: String): String
 //
 //     init {
