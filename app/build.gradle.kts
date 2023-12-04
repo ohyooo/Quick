@@ -32,12 +32,11 @@ android {
         targetSdk = libs.versions.target.sdk.get().toInt()
         versionCode = libs.versions.version.code.get().toInt()
         versionName = libs.versions.target.sdk.get() + hashTag
-        proguardFile("proguard-rules.pro")
         signingConfig = signingConfigs.getByName("debug")
     }
     buildTypes {
         release {
-            isMinifyEnabled = true
+            isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-defaults.txt"), "proguard-rules.pro")
         }
     }
@@ -51,20 +50,13 @@ android {
     buildFeatures {
         compose = true
         // Disable unused AGP features
-        buildConfig = false
+        // buildConfig = false
         aidl = false
         renderScript = false
-        resValues = false
         shaders = false
     }
     composeOptions {
         kotlinCompilerExtensionVersion = libs.versions.compose.compiler.get()
-    }
-}
-
-tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
-    kotlinOptions {
-        jvmTarget = "21"
     }
 }
 
