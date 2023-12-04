@@ -63,6 +63,7 @@ kotlin {
             androidNativeX64Main.dependsOn(this)
         }
     }
+    applyDefaultHierarchyTemplate()
 
 }
 
