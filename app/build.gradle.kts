@@ -36,7 +36,7 @@ android {
     }
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
             proguardFiles(getDefaultProguardFile("proguard-defaults.txt"), "proguard-rules.pro")
         }
     }
@@ -97,7 +97,7 @@ tasks.preBuild.configure {
     dependsOn.add(tasks.withType(CargoBuildTask::class.java))
 }
 
-tasks.whenObjectAdded {
+tasks.configureEach {
     if ((this.name == "mergeDebugJniLibFolders" || this.name == "mergeReleaseJniLibFolders")) {
         this.dependsOn("cargoBuild")
         this.inputs.dir(layout.buildDirectory.dir("rustJniLibs/android"))

@@ -72,6 +72,7 @@ android {
     namespace = "com.ohyooo.kni"
     defaultConfig {
         minSdk = 21
+        consumerProguardFile("consumer-rules.pro")
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_21
