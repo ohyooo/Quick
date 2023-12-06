@@ -9,7 +9,7 @@ updates:
       - gradle-plugin
 
   - package-ecosystem: "cargo"
-    directory: "/rust"
+    directory: "/rust/src/main/rust"
     schedule:
       interval: "daily"
 
