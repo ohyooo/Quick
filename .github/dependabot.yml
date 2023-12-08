@@ -7,6 +7,10 @@ updates:
     registries:
       - maven-google
       - gradle-plugin
+    groups:
+      maven-dependencies:
+        patterns:
+          - "*"
 
   - package-ecosystem: "cargo"
     directory: "/rust/src/main/rust"
