@@ -31,6 +31,13 @@ jobs:
           java-version: '21'
           java-package: jdk
 
+      - name: Cache Kotlin Native dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.konan/cache
+          key: ${{ runner.os }}-kotlin-native-${{ hashFiles('**/*.kts') }}
+          restore-keys: ${{ runner.os }}-kotlin-native-
+
       - name: Set up Rust toolchain
         uses: actions-rust-lang/setup-rust-toolchain@main
         with:
