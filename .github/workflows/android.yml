@@ -43,7 +43,6 @@ jobs:
         with:
           toolchain: stable
           target: armv7-linux-androideabi i686-linux-android aarch64-linux-android x86_64-linux-android
-          override: true
 
       - name: Add Android targets
         run: |
