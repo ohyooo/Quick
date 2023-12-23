@@ -54,6 +54,10 @@ android {
     }
 }
 
+compose {
+    kotlinCompilerPluginArgs.add("suppressKotlinVersionCompatibilityCheck=${libs.versions.kotlin.get()}")
+}
+
 dependencies {
     implementation(libs.bundles.compose)
     implementation(project(":kni"))
