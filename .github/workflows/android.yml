@@ -32,7 +32,7 @@ jobs:
           java-package: jdk
 
       - name: Cache Kotlin Native dependencies
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ~/.konan/cache
           key: ${{ runner.os }}-kotlin-native-${{ hashFiles('**/*.kts') }}
