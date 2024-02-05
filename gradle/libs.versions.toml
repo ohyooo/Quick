@@ -16,7 +16,7 @@ compose-compiler = "1.5.8"
 agp = { id = "com.android.application", version.ref = "agp" }
 kgp = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 ks = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
-jc = { id = "org.jetbrains.compose", version = "1.6.0-dev1397" }
+jc = { id = "org.jetbrains.compose", version = "1.5.12" }
 mozilla_rust = "org.mozilla.rust-android-gradle.rust-android:0.9.3"
 kmm = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 
