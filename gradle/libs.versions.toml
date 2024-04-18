@@ -9,8 +9,8 @@ version_name = "2.10"
 agp = "8.3.2"
 kotlin = "1.9.23"
 
-compose = "1.6.5"
-compose-compiler = "1.5.11"
+compose = "1.6.6"
+compose-compiler = "1.5.12"
 
 [plugins]
 agp = { id = "com.android.application", version.ref = "agp" }
@@ -23,10 +23,10 @@ kmm = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 [libraries]
 kotlin_coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.0"
 androidx_appcompat = "androidx.appcompat:appcompat:1.6.1"
-androidx_core_ktx = "androidx.core:core-ktx:1.12.0"
+androidx_core_ktx = "androidx.core:core-ktx:1.13.0"
 androidx_fragment_ktx = "androidx.fragment:fragment-ktx:1.6.2"
 
-compose-activity = "androidx.activity:activity-compose:1.8.2"
+compose-activity = "androidx.activity:activity-compose:1.9.0"
 compiler = { module = "androidx.compose.compiler:compiler", version.ref = "compose-compiler" }
 foundation = { module = "androidx.compose.foundation:foundation", version.ref = "compose" }
 material = { module = "androidx.compose.material:material", version.ref = "compose" }
