@@ -24,7 +24,7 @@ kmm = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlin_coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1"
 androidx_appcompat = "androidx.appcompat:appcompat:1.7.0"
 androidx_core_ktx = "androidx.core:core-ktx:1.13.1"
-androidx_fragment_ktx = "androidx.fragment:fragment-ktx:1.8.0"
+androidx_fragment_ktx = "androidx.fragment:fragment-ktx:1.8.1"
 
 compose-activity = "androidx.activity:activity-compose:1.9.0"
 compiler = { module = "androidx.compose.compiler:compiler", version.ref = "compose-compiler" }
