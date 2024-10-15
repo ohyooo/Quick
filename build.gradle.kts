@@ -10,6 +10,7 @@ plugins {
     alias(libs.plugins.jc) apply false
     alias(libs.plugins.mozilla.rust) apply false
     alias(libs.plugins.kmm) apply false
+    alias(libs.plugins.cc) apply false
 }
 
 allprojects {
