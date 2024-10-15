@@ -6,8 +6,8 @@ compile_sdk = "34"
 version_code = "10"
 version_name = "2.10"
 
-agp = "8.7.0"
-kotlin = "2.0.20"
+agp = "8.7.1"
+kotlin = "2.0.21"
 
 compose = "1.7.3"
 compose-compiler = "1.5.15"
