@@ -9,7 +9,7 @@ version_name = "2.10"
 agp = "8.7.1"
 kotlin = "2.0.21"
 
-compose = "1.7.4"
+compose = "1.7.5"
 compose-compiler = "1.5.15"
 
 [plugins]
@@ -24,8 +24,8 @@ cc = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 [libraries]
 kotlin_coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0"
 androidx_appcompat = "androidx.appcompat:appcompat:1.7.0"
-androidx_core_ktx = "androidx.core:core-ktx:1.13.1"
-androidx_fragment_ktx = "androidx.fragment:fragment-ktx:1.8.4"
+androidx_core_ktx = "androidx.core:core-ktx:1.15.0"
+androidx_fragment_ktx = "androidx.fragment:fragment-ktx:1.8.5"
 
 compose-activity = "androidx.activity:activity-compose:1.9.3"
 compiler = { module = "androidx.compose.compiler:compiler", version.ref = "compose-compiler" }
