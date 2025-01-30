@@ -7,9 +7,9 @@ version_code = "10"
 version_name = "2.10"
 
 agp = "8.8.0"
-kotlin = "2.1.0"
+kotlin = "2.1.10"
 
-compose = "1.7.6"
+compose = "1.7.7"
 compose-compiler = "1.5.15"
 
 [plugins]
