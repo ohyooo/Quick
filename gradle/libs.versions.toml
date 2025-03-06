@@ -6,7 +6,7 @@ compile_sdk = "34"
 version_code = "10"
 version_name = "2.10"
 
-agp = "8.8.1"
+agp = "8.9.0"
 kotlin = "2.1.10"
 
 compose = "1.7.8"
@@ -27,7 +27,7 @@ androidx_appcompat = "androidx.appcompat:appcompat:1.7.0"
 androidx_core_ktx = "androidx.core:core-ktx:1.15.0"
 androidx_fragment_ktx = "androidx.fragment:fragment-ktx:1.8.6"
 
-compose-activity = "androidx.activity:activity-compose:1.10.0"
+compose-activity = "androidx.activity:activity-compose:1.10.1"
 compiler = { module = "androidx.compose.compiler:compiler", version.ref = "compose-compiler" }
 foundation = { module = "androidx.compose.foundation:foundation", version.ref = "compose" }
 material = { module = "androidx.compose.material:material", version.ref = "compose" }
