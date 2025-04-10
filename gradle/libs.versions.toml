@@ -24,7 +24,7 @@ cc = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 [libraries]
 kotlin_coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2"
 androidx_appcompat = "androidx.appcompat:appcompat:1.7.0"
-androidx_core_ktx = "androidx.core:core-ktx:1.15.0"
+androidx_core_ktx = "androidx.core:core-ktx:1.16.0"
 androidx_fragment_ktx = "androidx.fragment:fragment-ktx:1.8.6"
 
 compose-activity = "androidx.activity:activity-compose:1.10.1"
