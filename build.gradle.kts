@@ -5,7 +5,6 @@ import java.io.ByteArrayOutputStream
 import java.nio.charset.Charset
 
 plugins {
-    alias(libs.plugins.agp) apply false
     alias(libs.plugins.kgp) apply false
     alias(libs.plugins.ks) apply false
     alias(libs.plugins.jc) apply false
