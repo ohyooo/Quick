@@ -15,13 +15,15 @@ plugins {
 
 allprojects {
     tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
-        kotlinOptions {
-            jvmTarget = "21"
-            freeCompilerArgs = freeCompilerArgs + listOf(
-                "-Xbackend-threads=12",
-                "-opt-in=kotlin.RequiresOptIn",
-                "-Xcontext-receivers",
-                "-jvm-target=21",
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_21)
+            freeCompilerArgs.addAll(
+                listOf(
+                    "-Xcontext-parameters", 
+                    "-jvm-target=21",
+                    "-Xreturn-value-checker=full",
+                    "-Xexplicit-backing-fields",
+                )
             )
         }
     }
