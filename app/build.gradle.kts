@@ -1,7 +1,6 @@
 @file:Suppress("UnstableApiUsage")
 
 plugins {
-    alias(libs.plugins.agp)
     alias(libs.plugins.kgp)
     alias(libs.plugins.jc)
     alias(libs.plugins.cc)
